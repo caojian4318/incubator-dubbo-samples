@@ -37,12 +37,12 @@ public class ZKTools {
     }
 
     public static void generateDubboPropertiesForGlobal() {
-        String str = "dubbo.registry.address=zookeeper://127.0.0.1:2181\n" + "dubbo.metadata-report.address=zookeeper://127.0.0.1:2181\n" + "dubbo.protocol.port=-1\n" + "dubbo.registry.simplified=true\n";
+        String str = "dubbo.registry.address=zookeeper://127.0.0.1:2181?group=/myreg\n" + "dubbo.metadata-report.address=zookeeper://127.0.0.1:2181?group=/myreg\n" + "dubbo.protocol.port=8888\n" + "dubbo.registry.simplified=true\n";
 
         System.out.println(str);
 
         try {
-            String path = "/dubbo/config/dubbo/dubbo.properties";
+            String path = "/test/im/config/dubbo/dubbo.properties";
             if (client.checkExists().forPath(path) == null) {
                 client.create().creatingParentsIfNeeded().forPath(path);
             }
@@ -60,7 +60,7 @@ public class ZKTools {
         System.out.println(str);
 
         try {
-            String path = "/dubbo/config/configcenter-consumer/dubbo.properties";
+            String path = "/test/im/config/configcenter-consumer/dubbo.properties";
             if (client.checkExists().forPath(path) == null) {
                 client.create().creatingParentsIfNeeded().forPath(path);
             }
