@@ -26,7 +26,8 @@
 
     <dubbo:application name="configcenter-consumer"/>
 
-    <dubbo:config-center highest-priority="false" address="zookeeper://127.0.0.1:2181"/>
+    <!--<dubbo:config-center highest-priority="false" address="zookeeper://127.0.0.1:2181"/>-->
+    <dubbo:config-center address="zookeeper://127.0.0.1:2181?config.namespace=test/im" namespace="test/im"/>
 
     <dubbo:reference group="*" id="demoService" interface="org.apache.dubbo.samples.configcenter.api.DemoService"/>
 
